@@ -1,12 +1,18 @@
-// Type definitions for which 1.0.8
+// Type definitions for which 1.2.14
 // Project: https://github.com/isaacs/node-which
-// Definitions by: vvakame <https://github.com/vvakame>
+// Definitions by: vvakame <https://github.com/vvakame>, virtyaluk <https://github.com/virtyaluk>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 
-declare function when(cmd: string, cb: (err: Error, path: string) => void): void;
-declare namespace when {
-    function sync(cmd: string): string;
+declare interface Options {
+    colon?: string;
+    path?: string;
+    pathExt?: string;
+    all?: boolean;
+}
+declare function which(cmd: string, opt?: Options | ((err: Error, path: string) => void), cb?: (err: Error, path: string) => void): void;
+declare namespace which {
+    function sync(cmd: string, opt?: Options): string;
 }
 
-export = when;
+export = which;
